@@ -11,6 +11,8 @@ app.get('/', (req, res) => {
 app.use(cors());
 app.use(express.json());
 
+
+
 const users = [
    { id: 1, name: 'Sabana', email: 'sabana@gmail.com' },
    { id: 2, name: 'Sabnor', email: 'sabnoor@gmail.com' },
@@ -31,10 +33,13 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
    try {
       const userCollection = client.db('simpleNode').collection('users');
-      const user = { name: 'mahiya Mahi', email: 'mehi@gmail.com' };
-      // const result = await userCollection.insertOne(user);
-      // console.log(result);
-
+      
+      app.get( '/users', async (req, res) =>{
+         const cursor = userCollection.find({});
+         const users = await cursor.toArray();
+         res.send(users);
+     })
+   
 
       app.post('/users', async (req, res) => {
          const user = req.body;
@@ -54,40 +59,9 @@ run().catch(err => console.log(err))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get('/users', (req, res) => {
    res.send(users)
 })
-
-//post -step 1
-// app.post('/users', (req, res) => {
-//    console.log('Post Api Called');
-//    console.log(req.body);
-// })
-
-// app.post('/users', (req, res) => {
-//    const user = req.body;
-//    user.id = users.length + 1;
-//    users.push(user);
-//    console.log(user)
-//    res.send(user);
-// })
-
-
 
 
 
