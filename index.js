@@ -17,11 +17,7 @@ const users = [
    { id: 3, name: 'Sabila', email: 'sabila@gmail.com' },
    { id: 4, name: 'Rubana', email: 'rubana@gmail.com' },
    { id: 5, name: 'Tamana', email: 'tamana@gmail.com' },
-   { id: 6, name: 'Habila', email: 'sHabila@gmail.com' },
-   { id: 7, name: 'Jomila', email: 'jomila@gmail.com' },
-   { id: 8, name: 'Sahana', email: 'sahana@gmail.com' },
-   { id: 9, name: 'Subana', email: 'subana@gmail.com' },
-   { id: 10, name: 'Hasina', email: 'hasina@gmail.com' },
+   
 ];
 
 
@@ -29,18 +25,22 @@ const users = [
 
 
 //MD code
-
-
 const uri = "mongodb+srv://dbUser1:FeKYIQnbDC2hTM4g@cluster0.emgjgfy.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("tsimpleNode").collection("users");
-  // perform actions on the collection object
-  console.log('Database Connected')
-  client.close();
-});
 
+async function run() {
+   try {
+      const userCollection = client.db('simpleNode').collection('users');
+      const user = { name: 'Nahiya Mahi', email: 'nehi@gmail.com' };
+      const result = await userCollection.insertOne(user);
+      console.log(result);
+   }
+   finally {
 
+   }
+}
+
+run().catch(err =>console.log(err))
 
 
 
@@ -71,12 +71,12 @@ app.get('/users', (req, res) => {
 // })
 
 app.post('/users', (req, res) => {
-       const user = req.body;
-       user.id = users.length + 1;
-       users.push(user);
-       console.log(user)
-       res.send(user);
-   })
+   const user = req.body;
+   user.id = users.length + 1;
+   users.push(user);
+   console.log(user)
+   res.send(user);
+})
 
 
 
