@@ -1,5 +1,5 @@
-const express = require('express')
-const cors = require('cors'); /**💠💍💎 cors */
+const express = require('express');
+const cors = require('cors');
 const app = express()
 const port = process.env.PORT || 5000;
 
@@ -7,7 +7,8 @@ app.get('/', (req, res) => {
    res.send('Hello World! Server is running')
 })
 
-app.use(cors()); /**💠💍💎 cors*/
+app.use(cors());
+// app.use(express.json());
 
 const users = [
    { id: 1, name: 'Sabana', email: 'sabana@gmail.com' },
@@ -26,6 +27,14 @@ const users = [
 app.get('/users', (req, res) => {
    res.send(users)
 })
+
+//post -step 1
+app.post('/users', (req, res) => {
+   console.log('Post Api Called');
+})
+
+
+
 
 
 app.listen(port, () => {
