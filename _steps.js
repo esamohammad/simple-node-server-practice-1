@@ -9,3 +9,9 @@ POST
 */
 
 // ok====================================
+
+/* 
+Query: 
+https://www.youtube.com/watch?v=CSB8DohoFfA&ab_channel=GSeriesMusic
+path?name=value&name=value&name=value
+*/
