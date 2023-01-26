@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(cors());
-// app.use(express.json());
+app.use(express.json());
 
 const users = [
    { id: 1, name: 'Sabana', email: 'sabana@gmail.com' },
@@ -29,9 +29,18 @@ app.get('/users', (req, res) => {
 })
 
 //post -step 1
+// app.post('/users', (req, res) => {
+//    console.log('Post Api Called');
+//    console.log(req.body);
+// })
+
 app.post('/users', (req, res) => {
-   console.log('Post Api Called');
-})
+       const user = req.body;
+       user.id = users.length + 1;
+       users.push(user);
+       console.log(user)
+       res.send(user);
+   })
 
 
 
