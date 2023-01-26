@@ -17,7 +17,7 @@ const users = [
    { id: 3, name: 'Sabila', email: 'sabila@gmail.com' },
    { id: 4, name: 'Rubana', email: 'rubana@gmail.com' },
    { id: 5, name: 'Tamana', email: 'tamana@gmail.com' },
-   
+
 ];
 
 
@@ -31,16 +31,25 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
    try {
       const userCollection = client.db('simpleNode').collection('users');
-      const user = { name: 'Nahiya Mahi', email: 'nehi@gmail.com' };
-      const result = await userCollection.insertOne(user);
-      console.log(result);
-   }
+      const user = { name: 'mahiya Mahi', email: 'mehi@gmail.com' };
+      // const result = await userCollection.insertOne(user);
+      // console.log(result);
+
+
+      app.post('/users', async (req, res) => {
+         const user = req.body;
+         const result = await userCollection.insertOne(user);
+         console.log(result);
+         user._id = result.insertedId;
+         res.send(user);
+     })
+ }
    finally {
 
    }
 }
 
-run().catch(err =>console.log(err))
+run().catch(err => console.log(err))
 
 
 
@@ -70,13 +79,13 @@ app.get('/users', (req, res) => {
 //    console.log(req.body);
 // })
 
-app.post('/users', (req, res) => {
-   const user = req.body;
-   user.id = users.length + 1;
-   users.push(user);
-   console.log(user)
-   res.send(user);
-})
+// app.post('/users', (req, res) => {
+//    const user = req.body;
+//    user.id = users.length + 1;
+//    users.push(user);
+//    console.log(user)
+//    res.send(user);
+// })
 
 
 
