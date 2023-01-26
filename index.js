@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express()
 const port = process.env.PORT || 5000;
 
@@ -22,6 +23,41 @@ const users = [
    { id: 9, name: 'Subana', email: 'subana@gmail.com' },
    { id: 10, name: 'Hasina', email: 'hasina@gmail.com' },
 ];
+
+
+
+
+
+//MD code
+
+
+const uri = "mongodb+srv://dbUser1:FeKYIQnbDC2hTM4g@cluster0.emgjgfy.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("tsimpleNode").collection("users");
+  // perform actions on the collection object
+  console.log('Database Connected')
+  client.close();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.get('/users', (req, res) => {

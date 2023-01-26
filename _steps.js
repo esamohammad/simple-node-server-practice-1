@@ -15,3 +15,16 @@ Query:
 https://www.youtube.com/watch?v=CSB8DohoFfA&ab_channel=GSeriesMusic
 path?name=value&name=value&name=value
 */
+
+
+
+/* 
+1. sign up mongodb atlas
+2. dba user FeKYIQnbDC2hTM4g
+3. Whitelist your ip address
+4. database> connect> show entire code > index > password change> name & collection name change
+5. npm i mongodb
+*/
+
+
+// FeKYIQnbDC2hTM4g
