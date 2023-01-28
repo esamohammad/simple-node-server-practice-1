@@ -26,5 +26,3 @@ path?name=value&name=value&name=value
 5. npm i mongodb
 */
 
-
-// FeKYIQnbDC2hTM4g
